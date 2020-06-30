@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ROI Calculator - Cash Pay Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='./bootstrap.min.css'>
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="roi-calculator initial-input">
+  <div class="container">
+    <div>
+      <h5 class="intro tab1"><span>ROI - Cash Pay Model</span></h5>
+      <h5 class="intro tab2"><span>ROI - ASP Model</span></h5>
+    </div>
+    <div class="input_container">
+      <h5 class="intro_heading"><span>ROI Calculator Cash Pay Model</span></h5>
+
+      <div class="heading">
+          <div class="left_align"><p class="heading_title_left">1. New Patient Consults</p></div>
+          <div class="right_align"><p class="heading_title_right">Enter inputs</p></div>
+          <div class="clear"></div>
+      </div>
+      <div class="title">
+        <div class="left_align"><p class="title_left"># of Hearing Assessments / Week</p></div>
+        <div class="right_align">
+          <p class="title_right">
+            <span class="title_right_span">
+              <input type="number" class="inputAR input_num_desc gray-color" id="hearingAW" placeholder="" value="9" min="0" oninput="validity.valid||(value='');"/>
+            </span>
+        </p>
+      </div>
+        
+        <div class="clear"></div>
+      </div>
+      <div class="title">
+        <div class="left_align"><p class="title_left">% Hearing Assessments Agreeing to Cognivue</p></div>
+        <div class="right_align"><p class="title_right">
+          <span class="title_right_span">
+          <input min="0" max="100" oninput="validity.valid||(value='');" type="number" class="percentage inputAR gray-color" id="hearingAAC" placeholder="" value="80" /><span id="percentage1" class="gray-color">%</span>
+            </span>
+        </p>
+      </div>
+        <div class="clear"></div>
+      </div>
+      <div class="title">
+        <div class="left_align"><p class="title_left">Incremental Revenue Fee per Cognivue Assessment</p></div>
+        <div class="right_align"><p class="title_right">
+          <span class="title_right_span">
+          <span id="dollor1" class="gray-color">$</span><input min="0" oninput="validity.valid||(value='');" type="number" class="dollor inputAR gray-color" id="incrementalRFPCA" placeholder="" value="50" />
+            </span>
+        </p></div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="heading heading-margin">
+        <div class="left_align"><p class="heading_title_left">2. Check & Clean Appointment</p></div>
+        <div class="right_align"><p class="heading_title_right empty_value">.</p></div>
+        <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left"># of Check & Clean Appointments / Week</p></div>
+      <div class="right_align"><p class="title_right">
+        <span class="title_right_span">
+          <input min="0" oninput="validity.valid||(value='');" type="number" class="cheeckCAW input_num_desc gray-color" id="cheeckCAW1" placeholder="" value="35" />
+        </span>
+        </p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left">% Check & Clean Appointments Agreeing to Cognivue</p></div>
+      <div class="right_align"><p class="title_right">
+        <span class="title_right_span">
+        <input min="0" max="100" oninput="validity.valid||(value='');" type="number" class="percentage inputAR gray-color" id="checkCleanAAC" placeholder="" value="50" /><span id="percentage2" class="gray-color">%</span>
+      </span>
+      </p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left">Incremental Revenue Fee per Cognivue Assessment</p></div>
+      <div class="right_align"><p class="title_right">
+        <span class="title_right_span">
+        <span id="dollor2"  class="gray-color">$</span><input min="0" oninput="validity.valid||(value='');" type="number" class="dollor inputAR gray-color" id="incrementalRFPCA2" placeholder="" value="50" />
+      </span>
+      </p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="button_cont">
+      <img id="collapse_btn" class="collapse_btn" src="minus_icon.png">
+
+      <button class="roi_button" id="run_roi_clc">Run ROI Calculator</button>
+    </div>
+    
+    <div class="clear"></div>
+
+  </div>
+  <div class="output_container">
+    <div class="output_container_result">
+
+    <div class="heading">
+        <div class="left_align"><p class="heading_title_left">1. New Patient Consults</p></div>
+        <div class="right_align_business_model"><p class="heading_title_right business_model_h"><strong>Business Model w/ Cognivue</strong></p></div>
+        <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left"># of Hearing Assessments / Week</p></div>
+      <div class="right_align"><p class="title_right" id="row_1_1">9</p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left">% Hearing Assessments Agreeing to Cognivue</p></div>
+      <div class="right_align"><p class="title_right" id="row_1_2">80%</p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left">Cognivue Assessments / Week</p></div>
+      <div class="right_align"><p class="title_right" id="row_1_3">7.2</p></div>
+      <div class="clear"></div>
+    </div>
+    <div class="title">
+      <div class="left_align"><p class="title_left">Incremental Revenue Fee per Cognivue Assessment</p></div>
+      <div class="right_align"><p class="title_right" id="row_1_4">$50</p></div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="title">
+      <div class="left_align"><p class="title_left">Incremental Revenue Fee for Cognivue / Week</p></div>
+      <div class="right_align"><p class="title_right roi_bold" id="row_1_5">$360</p></div>
+      <div class="clear"></div>
+    </div>
+
+
+
+
+
+
+    <div class="heading heading-margin">
+      <div class="left_align"><p class="heading_title_left">2. Check & Clean Appointment</p></div>
+      <div class="right_align"><p class="heading_title_right empty_value">.</p></div>
+      <div class="clear"></div>
+  </div>
+  <div class="title">
+    <div class="left_align"><p class="title_left"># of Check & Clean Appointments / Week</p></div>
+    <div class="right_align"><p class="title_right" id="row_2_1">35</p></div>
+    <div class="clear"></div>
+  </div>
+  <div class="title">
+    <div class="left_align"><p class="title_left">% Check & Clean Appointments Agreeing to Cognivue</p></div>
+    <div class="right_align"><p class="title_right" id="row_2_2">50%</p></div>
+    <div class="clear"></div>
+  </div>
+  <div class="title">
+    <div class="left_align"><p class="title_left">Cognivue Assessments / Week</p></div>
+    <div class="right_align"><p class="title_right"id="row_2_3">17.5</p></div>
+    <div class="clear"></div>
+  </div>
+  <div class="title">
+    <div class="left_align"><p class="title_left">Incremental Revenue Fee per Cognivue Assessment</p></div>
+    <div class="right_align"><p class="title_right" id="row_2_4">$50</p></div>
+    <div class="clear"></div>
+  </div>
+  <div class="title">
+    <div class="left_align"><p class="title_left">Incremental Revenue Fee for Cognivue / Week</p></div>
+    <div class="right_align"><p class="title_right roi_bold" id="row_2_5">$875</p></div>
+    <div class="clear"></div>
+  </div>
+
+
+
+  <div class="heading heading-margin">
+    <div class="left_align"><p class="heading_title_left">Total Revenue & ROI (1+2)</p></div>
+    <div class="right_align"><p class="heading_title_right empty_value">.</p></div>
+    <div class="clear"></div>
+</div>
+<div class="title">
+  <div class="left_align"><p class="title_left">Incremental Revenue from Cognivue / Week</p></div>
+  <div class="right_align"><p class="title_right roi_bold" id="row_3_1">$1235</p></div>
+  <div class="clear"></div>
+</div>
+<div class="title">
+  <div class="left_align"><p class="title_left">Incremental Revenue from Cognivue / Year</p></div>
+  <div class="right_align"><p class="title_right roi_hint_c roi_bold"><span id="row_3_2" class="border_total">$59280</span></p></div>
+  <div class="right_align_end"><span class="roi_hint">48 Weeks / Year</span></div>
+  <div class="clear"></div>
+</div>
+<div class="title">
+  <div class="left_align"><p class="title_left">Monthly Subscription Fee for Cognivue</p></div>
+  <div class="right_align"><p class="title_right"id="row_3_3">$375</p></div>
+  <div class="clear"></div>
+</div>
+<div class="title">
+  <div class="left_align"><p class="title_left">Annual Subscription Fee for Cognivue</p></div>
+  <div class="right_align"><p class="title_right roi_hint_c roi_bold"><span id="row_3_4">$4500</span></p></div>
+  <div class="right_align_end"><span class="roi_hint">12 months / Year</span></div>
+
+  <div class="clear"></div>
+</div>
+<div class="title">
+  <div class="left_align"><p class="title_left">Annual Profit Derived from Cognivue</p></div>
+  <div class="right_align"><p class="title_right roi_bold"><span id="row_3_5" class="border_total">$54780</span></p></div>
+  <div class="clear"></div>
+</div>
+<div class="heading heading-margin roi">
+  <div class="left_align"><p class="heading_title_left"><strong>ROI</strong></p></div>
+  <div class="right_align"><p class="heading_title_right business_model_h roi-total-per"><strong><span id="roi_total" class="border_total">1217%</span></strong></p></div>
+  <div class="clear"></div>
+</div>
+
+  </div>
+  <button class="roi_button" id="back_button">Back to input</button>
+  <div class="clear"></div>
+
+</div>
+   </div>
+   <img id="logo" class="logo" src="logo.jpg" height="45">
+   <div class="clear"></div>
+
+</section>
+<!-- partial -->
+<script src='./bootstrap.min.js'></script>
+<script src='./jquery.min.js'></script>
+<script  src="./script.js"></script>
+
+</body>
+</html>
